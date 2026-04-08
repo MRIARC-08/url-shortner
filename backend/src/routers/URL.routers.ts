@@ -8,6 +8,7 @@ const router : RouterType = Router()
 
 router.route("/c").post(URLController.manageUrl)
 
+
 router.route("/:shortCode").get(URLController.redirectUrl)
 
 
