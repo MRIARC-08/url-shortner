@@ -22,8 +22,9 @@ function page() {
       url : url
     }
 
+    console.log(process.env.DEV_SERVER)
    
-    const res = await fetch(`${process.env.DEV_SERVER}/c/c`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_DEV_SERVER}/c/c`, {
       method: "POST",
       headers: {"Content-Type" : "application/json"},
       body : JSON.stringify(payload),
@@ -33,7 +34,7 @@ function page() {
 
     const shortCode = await res.json()
 
-    setRes(`http://localhost:6969/r/${shortCode}`)
+    setRes(`${process.env.NEXT_PUBLIC_DEV_SERVER}/r/${shortCode}`)
 
     setLoading(false)
 
