@@ -8,7 +8,7 @@ function page() {
   const [res, setRes] = useState<string | null>(null)
 
 
-  const handleRequest = async(e)=>{
+  const handleRequest = async(e: React.FormEvent<HTMLFormElement>)=>{
     e.preventDefault()
 
     console.log("jhj")
@@ -23,7 +23,7 @@ function page() {
     }
 
    
-    const res = await fetch("http://localhost:6969/c/c", {
+    const res = await fetch(`${process.env.DEV_SERVER}/c/c`, {
       method: "POST",
       headers: {"Content-Type" : "application/json"},
       body : JSON.stringify(payload),
