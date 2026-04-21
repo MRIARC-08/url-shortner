@@ -7,18 +7,36 @@ export class URLController {
        
 
         try {
+            console.log("im hereeeee")
+            let result;
             console.log("rnningg")
             const body = await req.body
-            const result = await URLrepository.createShortURL({
-                url : body.url,
-                shortCode : body.shortCode || null
-            })
-    
+            console.log(body)
+
+            result = await URLrepository.getURLByURL(body.url)
+
+            console.log(result)
+
+            if (result){
+                return res.json(
+                    result.shortCode
+                )
+            }else{
+
+                result = await URLrepository.createShortURL({
+                    url : body.url,
+                    shortCode : body.shortCode || null
+                })
+
+
+
+                return res.json(
+                    result
+                )
+
+            }
             
-    
-            return res.json(
-                result
-            )
+            
             
         } catch (error) {
             return res.json({error , status: 504})

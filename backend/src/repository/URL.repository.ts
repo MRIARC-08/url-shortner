@@ -46,5 +46,13 @@ export class URLrepository{
         })
     }
 
+    static async getURLByURL(url:string){
+        return await prisma.url.findUnique({
+            where: {
+                url
+            }
+        })
+    }
+
   
 }
