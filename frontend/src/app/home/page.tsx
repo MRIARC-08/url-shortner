@@ -22,9 +22,10 @@ function page() {
       url : url
     }
 
-    console.log(process.env.DEV_SERVER)
+    const baseUrl = process.env.NEXT_PUBLIC_DEV_SERVER || "https://url-shortner-nnpg.onrender.com";
+    console.log(baseUrl)
    
-    const res = await fetch(`${process.env.NEXT_PUBLIC_DEV_SERVER}/c/c`, {
+    const res = await fetch(`${baseUrl}/c/c`, {
       method: "POST",
       headers: {"Content-Type" : "application/json"},
       body : JSON.stringify(payload),
@@ -34,7 +35,7 @@ function page() {
 
     const shortCode = await res.json()
 
-    setRes(`${process.env.NEXT_PUBLIC_DEV_SERVER}/r/${shortCode}`)
+    setRes(`${baseUrl}/r/${shortCode}`)
 
     setLoading(false)
 
