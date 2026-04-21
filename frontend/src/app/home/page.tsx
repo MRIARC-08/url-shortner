@@ -18,12 +18,15 @@ function page() {
       setLoading(false)
       return 
     } 
+
+
     const payload = {
       url : url
     }
-
+    console.log(process.env.NEXT_PUBLIC_DEV_SERVER)
     const baseUrl = process.env.NEXT_PUBLIC_DEV_SERVER || "https://url-shortner-nnpg.onrender.com";
-    console.log(baseUrl)
+    // const baseUrl = "http://localhost:6969"
+
    
     const res = await fetch(`${baseUrl}/c/c`, {
       method: "POST",
@@ -34,6 +37,8 @@ function page() {
     })
 
     const shortCode = await res.json()
+
+    console.log(res)
 
     setRes(`${baseUrl}/r/${shortCode}`)
 
