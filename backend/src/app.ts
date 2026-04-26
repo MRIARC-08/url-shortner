@@ -17,6 +17,9 @@ app.use(express.static("public"))
 app.use(cookieParser())
 
 
+app.get("/health", (req, res) => {
+    res.status(200).json({ status: "OK" });
+});
 
 
 import urlRouter from "./routers/URL.routers"
